@@ -27,7 +27,11 @@ Route::get('/posts/{post}', function ($postSlug) {
     }
 
 
-    $post = file_get_contents($path);
+    // cache is located at storage/framework/cache
+    $post = cache()->remember("posts.${postSlug}", now()->addMinutes(10), function() use ($path) {
+        // var_dump('file contents');
+        return file_get_contents($path);
+    });
 
     return view('post', [
         'post' => $post,
