@@ -12,13 +12,9 @@
 <body>
 
     <h2> Welcome </h2>
-
-    <x-posts.first-post />
-
-    <x-posts.second-post />
-
-    <x-posts.third-post />
-
+    <?php foreach ($posts as $post): ?>
+    <?= $post ?>
+    <?php endforeach; ?>
 </body>
 
 </html>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,24 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+
+    return view('home', ['posts' => Post::getAll()]);
 
 });
 
 Route::get('/posts/{post}', function ($postSlug) {
-
-    $path = __DIR__. "/../public/files/posts/{$postSlug}.html";
-
-    if (! file_exists($path)) {
-        return redirect('/');
-    }
-
-
-    // cache is located at storage/framework/cache
-    $post = cache()->remember("posts.${postSlug}", now()->addMinutes(10), function() use ($path) {
-        // var_dump('file contents');
-        return file_get_contents($path);
-    });
+    
+    $post = Post::find($postSlug);
 
     return view('post', [
         'post' => $post,
