@@ -28,6 +28,17 @@ class Post extends Model
     return static::getAll()->firstWhere('slug', $postSlug);
   }
 
+
+  public static function findOrFail($postSlug){
+    $post = static::find($postSlug);
+
+    if(!$post) {
+      throw new ModelNotFoundException();
+    }
+
+    return $post;
+  }
+
 // todo use service provider to do move some of this logic when Bootstrap.
 	public static function getAll() {
     return cache()->rememberForever('post.all', function() {
