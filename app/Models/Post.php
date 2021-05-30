@@ -25,15 +25,7 @@ class Post extends Model
 
   public static function find($postSlug) {
 
-    $path = public_path("files/posts/{$postSlug}.html");
-
-    if (! file_exists($path)) {
-      throw new ModelNotFoundException();
-    };
-
-    return cache()->remember("posts.${postSlug}", now()->addMinutes(1), function() use ($path) {
-      return file_get_contents($path);
-    });
+    return static::getAll()->firstWhere('slug', $postSlug);
   }
 
 

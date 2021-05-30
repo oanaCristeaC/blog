@@ -11,8 +11,11 @@
 
 <body>
 
-    <?= $post ?>
-    <a href="/">Go back</a>
+    <article>
+        <h2> <?= $post->title ?></h2>
+        <div> <?= $post->body ?> </div>
+        <a href="/">Go back</a>
+  </article>
 
 </body>
 
