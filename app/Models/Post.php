@@ -8,6 +8,20 @@ use Illuminate\Support\Facades\File;
 
 class Post extends Model
 {
+  public $title;
+  public $slug;
+  public $body;
+  public $date;
+  public $excerpt;
+
+  public function __construct ($title, $slug, $body, $date, $excerpt){
+    $this->title = $title;
+    $this->slug = $slug;
+    $this->body = $body;
+    $this->date = $date;
+    $this->excerpt = $excerpt;
+  }
+
   public static function find($postSlug) {
 
     $path = public_path("files/posts/{$postSlug}.html");

@@ -12,8 +12,13 @@
 <body>
 
     <h2> Welcome </h2>
+
     <?php foreach ($posts as $post): ?>
-    <?= $post ?>
+    <article>
+        <h2> <?= $post->title ?> </h2>
+        <p><?= $post->excerpt ?></p>
+    </article>
+
     <?php endforeach; ?>
 </body>
 
