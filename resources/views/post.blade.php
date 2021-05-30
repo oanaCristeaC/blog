@@ -12,10 +12,12 @@
 <body>
 
     <article>
-        <h2> <?= $post->title ?></h2>
-        <div> <?= $post->body ?> </div>
+        <h2> {{ $post->title }} </h2>
+        <div>
+            <p> {{ $post->body }} </p>
+        </div>
         <a href="/">Go back</a>
-  </article>
+    </article>
 
 </body>
 

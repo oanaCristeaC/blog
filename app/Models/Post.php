@@ -28,9 +28,10 @@ class Post extends Model
     return static::getAll()->firstWhere('slug', $postSlug);
   }
 
-
+// todo use service provider to do move some of this logic when Bootstrap.
 	public static function getAll() {
     return cache()->rememberForever('post.all', function() {
+
 		  return collect(File::files(public_path("files/posts/")))
       ->map(function($file){
         return YamlFrontMatter::parseFile($file);
