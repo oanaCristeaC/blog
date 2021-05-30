@@ -37,15 +37,13 @@ class Post extends Model
 
 
 	public static function getAll() {
-
-		$postsInfo = File::files(public_path("files/posts"));
-
-		$posts = array_map(function ($postInfo) {
-
-			return file_get_contents($postInfo);
-
-		}, $postsInfo);
 	
-		return $posts;
+		return collect(File::files(public_path("files/posts/")))
+    ->map(function($file){
+        return YamlFrontMatter::parseFile($file);
+    })
+    ->map(function ($document){
+        return new Post($document->title, $document->slug, $document->body(), $document->date, $document->excerpt);
+});
 	}
 }
