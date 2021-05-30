@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('components/layout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/app.css">
-    <title>Blog</title>
-</head>
-
-<body>
-
+@section('content')
     <h2> Welcome </h2>
 
     @foreach ($posts as $post)
@@ -24,6 +14,4 @@
         </article>
 
     @endforeach;
-</body>
-
-</html>
+@endsection
