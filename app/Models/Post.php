@@ -37,6 +37,7 @@ class Post extends Model
     })
     ->map(function ($document){
         return new Post($document->title, $document->slug, $document->body(), $document->date, $document->excerpt);
-});
+    })
+    ->sortByDesc('date');
 	}
 }
