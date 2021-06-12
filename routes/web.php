@@ -22,9 +22,11 @@ Route::get('/', function () {
 
 });
 
-Route::get('/posts/{post}', function ($id) {
-
-    $post = Post::findOrFail($id);
+/**
+ * Implicit biding
+ * the post model with the matching id from the request is injected
+ */
+Route::get('/posts/{post}', function (Post $post) {
 
     return view('post', [
         'post' => $post,
