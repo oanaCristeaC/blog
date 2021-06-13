@@ -11,8 +11,8 @@ class Post extends Model
 
     protected $guarded = []; //@todo remove this
 
-    public function getRouteKeyName()
+    public function category()
     {
-        return 'slug';
+        return $this->belongsTo(Category::class);
     }
 }

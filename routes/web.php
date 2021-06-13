@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +27,18 @@ Route::get('/', function () {
  * Implicit biding
  * the post model with the matching id from the request is injected
  */
-Route::get('/posts/{post}', function (Post $post) {
+Route::get('/posts/{post:slug}', function (Post $post) {
 
     return view('post', [
         'post' => $post,
+    ]);
+
+});
+
+Route::get('/categories/{category:slug}', function (Category $category) {
+
+    return view('category', [
+        'category' => $category,
     ]);
 
 });
