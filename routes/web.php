@@ -17,6 +17,9 @@ use App\Models\Category;
 
 Route::get('/', function () {
 
+    \Illuminate\Support\Facades\DB::listen(function($query){
+        logger($query->sql, $query->bindings);
+    });
     $posts = Post::all();
 
     return view('home', ['posts' => $posts]);
