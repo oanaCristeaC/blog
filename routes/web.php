@@ -26,7 +26,7 @@ Route::get('/', function () {
  * Implicit biding
  * the post model with the matching id from the request is injected
  */
-Route::get('/posts/{post}', function (Post $post) {
+Route::get('/posts/{post:slug}', function (Post $post) { //Post::where(slug, $post)->firstOrFail();
 
     return view('post', [
         'post' => $post,
