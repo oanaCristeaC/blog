@@ -10,4 +10,9 @@ class Post extends Model
     //protected $fillable= ['title', 'body', 'excerpt', 'slug'];
 
     protected $guarded = []; //@todo remove this
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
