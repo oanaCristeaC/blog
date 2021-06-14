@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Category;
 
 class PostSeeder extends Seeder
 {
@@ -13,6 +15,23 @@ class PostSeeder extends Seeder
     public function run()
     {
         Post::truncate();
-        factory(Post::class, 10)->create();
+
+        $user = factory(User::class)->create([
+            'name' => 'John Doe',
+        ]);
+
+        $catNames = array('it', 'sport', 'food');
+
+        //todo: O(1) instead of O(n)
+        foreach ($catNames as $category) {
+            $catObj = factory(Category::class)->create([
+                'name' => $category,
+            ]);
+
+            factory(Post::class, 2)->create([
+                'user_id' => $user->id,
+                'category_id' => $catObj->id
+            ]);
+        }
     }
 }
