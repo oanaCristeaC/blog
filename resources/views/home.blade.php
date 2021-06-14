@@ -12,7 +12,7 @@
             </h2>
             <h3>
                 <a href="/categories/{{ $post->category->slug }}">
-                    {{ $post->category->name }}
+                   Category: {{ $post->category->name }}
                 </a>
             </h3>
             <p>{{ $post->excerpt }}</p>

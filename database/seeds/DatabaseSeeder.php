@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Category;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,8 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UserSeeder::class);
+        User::truncate(); // remove it here before PostFactory seed
+        Category::truncate();
+
         $this->call(PostSeeder::class);
-        $this->call(CategorySeeder::class);
     }
 }
