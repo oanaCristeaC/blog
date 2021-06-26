@@ -1,7 +1,7 @@
 @extends('components/layout')
 
 @section('content')
-    <h2> Welcome</h2>
+    <h2> Welcome </h2>
 
     @foreach ($posts as $post)
         <article>
