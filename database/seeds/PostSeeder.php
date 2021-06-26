@@ -14,8 +14,6 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        Post::truncate();
-
         $user = factory(User::class)->create([
             'name' => 'John Doe',
         ]);

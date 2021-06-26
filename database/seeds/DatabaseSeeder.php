@@ -13,9 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::truncate(); // remove it here before PostFactory seed
-        Category::truncate();
-
         $this->call(PostSeeder::class);
     }
 }

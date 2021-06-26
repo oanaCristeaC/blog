@@ -9,6 +9,7 @@
                 <a href="/posts/{{ $post->slug }}">
                     {{ $post->title }}
                 </a>
+                <div>By <a href="authors/{{$post->author->username}}"> {{$post->author->name}} </a> </div>
             </h2>
             <h3>
                 <a href="/categories/{{ $post->category->slug }}">
