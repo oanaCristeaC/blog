@@ -19,7 +19,7 @@ use App\Models\User;
 Route::get('/', function () {
 
     //TODO: return by latest
-    $posts = Post::with('category', 'author')->get();
+    $posts = Post::get();
 
     return view('posts', ['posts' => $posts]);
 
@@ -40,7 +40,7 @@ Route::get('/posts/{post:slug}', function (Post $post) {
 Route::get('/categories/{category:slug}', function (Category $category) {
 
     return view('category', [
-        'category' => $category,
+        'category' => $category
     ]);
 
 });
@@ -48,7 +48,7 @@ Route::get('/categories/{category:slug}', function (Category $category) {
 Route::get('/authors/{author:username}', function (User $author) {
 
     return view('posts', [
-        'posts' => $author->posts->load(['category', 'author']),
+        'posts' => $author->posts,
     ]);
 
 });
