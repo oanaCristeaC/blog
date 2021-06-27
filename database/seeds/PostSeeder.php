@@ -26,7 +26,7 @@ class PostSeeder extends Seeder
                 'name' => $category,
             ]);
 
-            factory(Post::class, 2)->create([
+            factory(Post::class, 5)->create([
                 'user_id' => $user->id,
                 'category_id' => $catObj->id
             ]);
