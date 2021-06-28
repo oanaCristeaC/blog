@@ -42,14 +42,14 @@
      <h2 class="font-weight-normal mb-4"> Stay in touch with the latest posts </h2>
 
      <div class="">
-         <form method="POST" action="#">
-             <div class="form-group">
+         <form method="POST" action="#" class="position-relative d-inline-block">
+             <div class="form-group d-flex align-items-center">
                  <label for="email" class="d-none">
                      <img src="/images/mailbox-icon.svg" alt="mailbox letter">
                  </label>
                  <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
              </div>
-             <button type="submit" class="btn btn-info px-5 my-5">Subscribe</button>
+             <button type="submit" class="btn btn-info px-3 my-3">Subscribe</button>
          </form>
      </div>
  </div>
