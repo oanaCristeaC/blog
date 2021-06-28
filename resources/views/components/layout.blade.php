@@ -36,7 +36,25 @@
 
 {{ $slot }}
 
-{{--@yield('content')--}}
+<footer class="bg-light text-center py-5">
+ <div class="container">
+     <img src="./images/lary-newsletter-icon.svg" alt="email" class="mx-auto" style="width: 145px;">
+     <h2 class="font-weight-normal mb-4"> Stay in touch with the latest posts </h2>
+
+     <div class="">
+         <form method="POST" action="#">
+             <div class="form-group">
+                 <label for="email" class="d-none">
+                     <img src="/images/mailbox-icon.svg" alt="mailbox letter">
+                 </label>
+                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+             </div>
+             <button type="submit" class="btn btn-info px-5 my-5">Subscribe</button>
+         </form>
+     </div>
+ </div>
+
+</footer>
 
 </body>
 

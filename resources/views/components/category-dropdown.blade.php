@@ -9,13 +9,13 @@
             </button>
 
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item {{ request()->routeIs('home') ? 'bg-info' : '' }}" href="/">All</a></li>
                 @foreach($categories as $categorySelection)
                     <li>
                         <a class="dropdown-item {{ isset($category) && $category->is($categorySelection) ? 'bg-info' : ''}}"
                            href="/categories/{{ $categorySelection->slug }}">{{ ucwords($categorySelection->name) }}</a>
                     </li>
                 @endforeach
-                <li><a class="dropdown-item" href="/">All</a></li>
             </ul>
         </div>
     </x-slot>
