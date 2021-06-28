@@ -17,7 +17,7 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', [PostController::class, 'index']);
+Route::get('/', [PostController::class, 'index'])->name('home');;
 
 /**
  * Implicit biding
@@ -34,7 +34,8 @@ Route::get('/posts/{post:slug}', function (Post $post) {
 Route::get('/categories/{category:slug}', function (Category $category) {
 
     return view('category', [
-        'category' => $category
+        'category' => $category,
+        'categories' => Category::all(),
     ]);
 
 });
