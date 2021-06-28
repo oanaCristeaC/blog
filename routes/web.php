@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\User;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,14 +17,7 @@ use App\Models\User;
 |
 */
 
-Route::get('/', function () {
-
-    //TODO: return by latest
-    $posts = Post::get();
-
-    return view('posts', ['posts' => $posts]);
-
-});
+Route::get('/', [PostController::class, 'index']);
 
 /**
  * Implicit biding

@@ -11,8 +11,8 @@
         <div class=" col-12 col-md-6" style="display: flex; flex-direction: column">
             <div>
                 <div class="space-x-2">
-                    <button class="btn btn-sm btn-outline-info"
-                            href="/categories/{{ $post->category->slug }}">{{$post->category->name}}</button>
+                    <a class="btn btn-sm btn-outline-info" type="button"
+                            href="/categories/{{ $post->category->slug }}">{{$post->category->name}}</a>
                 </div>
 
                 <div class="mt-2">

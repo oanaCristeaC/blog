@@ -1,6 +1,6 @@
 <x-layout>
-
     @include('components._header')
+
     <main class="container">
         @if($posts->count())
             <x-posts-grid-card :posts="$posts" />

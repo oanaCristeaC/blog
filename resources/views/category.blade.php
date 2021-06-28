@@ -1,18 +1,14 @@
-@extends('components/layout')
+<x-layout>
 
-@section('content')
-    <h2>{{ strtoupper($category->name) }}</h2>
-    <article>
-        @foreach ($category->posts as $post)
-            <article>
-                <h2>
-                    <a href="/posts/{{ $post->slug }}">
-                        {{ $post->title }}
-                    </a>
-                </h2>
-                <p>{{ $post->excerpt }}</p>
-            </article>
-        @endforeach
-        <a href="/">Go back</a>
-    </article>
-@endsection
+    <main class="container">
+        <h2>{{ strtoupper($category->name) }}</h2>
+
+        @if($category->posts->count())
+            <x-posts-grid-card :posts="$category->posts" />
+            <a href="/">Go back</a>
+        @else
+            <p class="text-center"> No posts yet. Please check again later.</p>
+        @endif
+    </main>
+
+</x-layout>
