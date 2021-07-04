@@ -18,17 +18,7 @@ use App\Http\Controllers\PostController;
 
 Route::get('/', [PostController::class, 'index'])->name('home');
 
-/**
- * Implicit biding
- * the post model with the matching id from the request is injected
- */
-Route::get('/posts/{post:slug}', function (Post $post) {
-
-    return view('post', [
-        'post' => $post,
-    ]);
-
-});
+Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('post');
 
 Route::get('/categories/{category:slug}', function (Category $category) {
 
