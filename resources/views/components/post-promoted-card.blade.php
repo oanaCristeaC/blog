@@ -33,7 +33,7 @@
            </div>
 
            <div class="d-flex justify-content-end">
-               <a class="btn btn-sm btn-secondary" role="button" href="/posts/{{ $post->slug }}">
+               <a class="btn btn-sm btn-light" role="button" href="/posts/{{ $post->slug }}">
                    Read more
                </a>
            </div>

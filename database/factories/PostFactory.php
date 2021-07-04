@@ -10,6 +10,6 @@ $factory->define(Post::class, function (Faker $faker) {
         'title' => $faker->sentence,
         'slug' => $faker->slug(),
         'excerpt' => $faker->text(200),
-        'body' => $faker->paragraph(7),
+        'body' => $faker->paragraph(20),
     ];
 });

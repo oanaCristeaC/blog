@@ -38,7 +38,7 @@
 
 <footer class="bg-light text-center py-5">
  <div class="container">
-     <img src="./images/lary-newsletter-icon.svg" alt="email" class="mx-auto" style="width: 145px;">
+     <img src="/images/lary-newsletter-icon.svg" alt="email" class="mx-auto" style="width: 145px;">
      <h2 class="font-weight-normal mb-4"> Stay in touch with the latest posts </h2>
 
      <div class="">

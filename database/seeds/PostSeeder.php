@@ -18,12 +18,13 @@ class PostSeeder extends Seeder
             'name' => 'John Doe',
         ]);
 
-        $catNames = array('it', 'sport', 'food');
+        $catNames = array('it', 'sport', 'food', 'music', 'fashion', 'medicine', 'marketing', 'business', 'pharmacy', 'agronomy');
 
         //todo: O(1) instead of O(n)
         foreach ($catNames as $category) {
             $catObj = factory(Category::class)->create([
                 'name' => $category,
+                'slug' => $category //todo: slugify
             ]);
 
             factory(Post::class, 5)->create([

@@ -12,8 +12,8 @@
             <div class=" col-12 py-3" style="display: flex; flex-direction: column; min-height: 450px">
                 <header>
                     <div class="space-x-2">
-                        <button class="btn btn-sm btn-outline-info"
-                                href="/categories/{{ $post->category->slug }}">{{$post->category->name}}</button>
+                        <a class="btn btn-sm btn-outline-info px-3"
+                                href="/categories/{{ $post->category->slug }}">{{$post->category->name}}</a>
                     </div>
 
                     <div class="mt-2">
@@ -36,11 +36,12 @@
                 <footer>
                     <nav class="navbar navbar-light">
                         <div class="container-fluid px-0">
-                            <a class="navbar-brand" href="/?author={{ $post->author->username }}">
+{{--                            <a class="navbar-brand" href="/?author={{ $post->author->username }}">--}}
+                            <a class="navbar-brand" href="/authors/{{ $post->author->username }}">
                                 <img src="/images/lary-avatar.svg" alt="Lary avatar">
                                 {{ $post->author->name }}
                             </a>
-                            <a class="btn btn-sm btn-secondary" role="button" href="/posts/{{ $post->slug }}">
+                            <a class="btn btn-sm btn-light" role="button" href="/posts/{{ $post->slug }}">
                                 Read more
                             </a>
                         </div>

@@ -3,12 +3,12 @@
 <x-dropdown>
     <x-slot name="trigger">
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
                     data-bs-toggle="dropdown" aria-expanded="false">
                 {{ isset($category) ? ucwords($category->name) : 'Categories' }}
             </button>
 
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="max-height:200px; overflow: auto ">
                 <li><a class="dropdown-item {{ request()->routeIs('home') ? 'bg-info' : '' }}" href="/">All</a></li>
                 @foreach($categories as $categorySelection)
                     <li>

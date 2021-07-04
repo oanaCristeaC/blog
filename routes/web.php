@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Models\Category;
-use App\Models\User;
 use App\Http\Controllers\PostController;
 
 /*
@@ -17,7 +16,7 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', [PostController::class, 'index'])->name('home');;
+Route::get('/', [PostController::class, 'index'])->name('home');
 
 /**
  * Implicit biding
@@ -40,10 +39,5 @@ Route::get('/categories/{category:slug}', function (Category $category) {
 
 });
 
-Route::get('/authors/{author:username}', function (User $author) {
+Route::get('/authors/{author:username}', [PostController::class, 'authorPosts'])->name('author-posts');
 
-    return view('posts', [
-        'posts' => $author->posts,
-    ]);
-
-});
