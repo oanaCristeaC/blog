@@ -6,9 +6,7 @@
 
     <div class="row">
         @foreach ($posts->skip(1) as $post)
-            <x-post-card
-                :post="$post"
-            />
+            <x-post-card :post="$post"/>
         @endforeach
     </div>
 
