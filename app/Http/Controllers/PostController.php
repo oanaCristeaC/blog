@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\Category;
-use App\Models\User;
 
 class PostController extends Controller
 {
@@ -14,7 +12,6 @@ class PostController extends Controller
             'posts' => Post::with('category', 'author')
                     ->filter(request(['search', 'category', 'author']))->get()
         ]);
-
     }
 
     public function show (Post $post)
