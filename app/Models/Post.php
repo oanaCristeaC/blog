@@ -13,6 +13,8 @@ class Post extends Model
 
     protected $with = ['category', 'author'];
 
+
+    //todo: this is buggy as it return either first filter or orWhere combined with second category
     public function scopeFilter($query, array $filters)
     {
 
@@ -22,16 +24,9 @@ class Post extends Model
         });
 
         $query->when($filters["category"] ?? false, function ($query, $category) {
-
-            $query->whereExists(function ($query) use ($category) {
-                $query->from('categories')
-                    ->whereColumn('categories.id', 'posts.category_id')
-                    ->where('categories.slug', $category);
+            $query->whereHas('category', function ($query) use ($category) {
+                $query->where('slug', $category);
             });
-
-//            $query->whereHas('category', function ($query) use ($category) {
-//                $query->where('slug', $category);
-//            });
         });
 
     }
