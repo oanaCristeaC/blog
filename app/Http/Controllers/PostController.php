@@ -12,7 +12,7 @@ class PostController extends Controller
     {
         return view('posts.index', [
             'posts' => Post::with('category', 'author')
-                    ->filter(request(['search', 'category']))->get()
+                    ->filter(request(['search', 'category', 'author']))->get()
         ]);
 
     }
@@ -21,18 +21,6 @@ class PostController extends Controller
     {
         return view('posts.show', [
             'post' => $post,
-        ]);
-
-    }
-
-        public function authorPosts(User $author)
-    {
-
-        $categories = Category::all();
-
-        return view('posts.index', [
-            'posts' => $author->posts,
-            'categories' => $categories
         ]);
 
     }

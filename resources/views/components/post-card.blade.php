@@ -41,8 +41,7 @@
             <footer>
                 <nav class="navbar navbar-light">
                     <div class="container-fluid px-0">
-                        {{--                            <a class="navbar-brand" href="/?author={{ $post->author->username }}">--}}
-                        <a class="navbar-brand" href="/authors/{{ $post->author->username }}">
+                        <a class="navbar-brand" href="/?author={{ $post->author->username }}">
                             <img src="/images/lary-avatar.svg" alt="Lary avatar">
                             {{ $post->author->name }}
                         </a>
