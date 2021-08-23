@@ -5,9 +5,8 @@
 <div class="col-12 col-md-4 my-3">
     <div class="row">
         <div class="col-12">
-            {{-- TODO --}}
 
-            <a href="/posts/{{ $post->slug }}">
+            <a href="/?post={{ $post->slug }}">
                 <img src="/images/illustration-1.png" style="max-width:100%;" alt="Blog Post illustration"
                      class="rounded">
             </a>

@@ -3,8 +3,7 @@
 <div class="my-3 my-md-3">
     <div class="row">
         <div class="col-12 col-md-6">
-            {{-- TODO --}}
-            <a href="/posts/{{ $post->slug }}">
+            <a href="/?post={{ $post->slug }}">
                 <img src="/images/illustration-1.png" style="max-width: 100%" alt="Blog Post illustration"
                      class="rounded">
             </a>
@@ -13,7 +12,7 @@
             <div>
                 <div class="space-x-2">
                     <a class="btn btn-sm btn-outline-info" type="button"
-                       href="/categories/{{ $post->category->slug }}">{{$post->category->name}}</a>
+                       href="/?category={{ $post->category->slug }}">{{$post->category->name}}</a>
                 </div>
 
                 <div class="mt-2">

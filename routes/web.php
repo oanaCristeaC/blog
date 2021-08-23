@@ -21,6 +21,4 @@ Route::get('/', [PostController::class, 'index'])->name('home');
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])
     ->name('post');
 
-Route::get('/authors/{author:username}', [PostController::class, 'authorPosts'])
-    ->name('author-posts');
 
