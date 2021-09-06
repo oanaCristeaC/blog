@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-12">
 
-            <a href="/?post={{ $post->slug }}">
+            <a href="/posts/{{ $post->slug }}">
                 <img src="/images/illustration-1.png" style="max-width:100%;" alt="Blog Post illustration"
                      class="rounded">
             </a>
@@ -15,7 +15,7 @@
             <header>
                 <div class="space-x-2">
                     <a class="btn btn-sm btn-outline-info px-3"
-                       href="/categories/{{ $post->category->slug }}">{{$post->category->name}}</a>
+                       href="/category={{ $post->category->slug }}">{{$post->category->name}}</a>
                 </div>
 
                 <div class="mt-2">
