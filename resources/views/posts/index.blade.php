@@ -3,12 +3,17 @@
 
     <main class="container">
         @if($posts->count())
-            <x-posts-grid-card :posts="$posts" />
+            <x-posts-grid-card :posts="$posts"/>
 
             {{ $posts->links() }}
         @else
             <p class="text-center"> No posts yet. Please check again later.</p>
         @endif
     </main>
+    @if(session('accountCreated'))
+        <div class="d-flex justify-content-end fixed-bottom" style="right: 12px">
+            <x-flash messageKey="accountCreated"/>
+        </div>
+    @endif
 </x-layout>
 

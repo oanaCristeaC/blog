@@ -25,6 +25,8 @@ class UserController extends Controller
 
        User::create($attributes);
 
-       return redirect('/');
+//        session()->flash('accountCreated', 'Your account has been created!');
+//        return redirect('/');
+        return redirect('/')->with('accountCreated', 'Your account has been created!');
     }
 }
