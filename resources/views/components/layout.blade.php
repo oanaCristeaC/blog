@@ -18,19 +18,43 @@
 <body class="w-100">
 
 <section>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a href="/" class="navbar-brand">
+            <a class="navbar-brand" href="#">
                 <picture>
                     <source media="(max-width: 799px)" srcset="images/logo-short.jpg">
                     <source media="(min-width: 800px)" srcset="/images/logo.jpg">
                     <img style="max-height:40px" src="/images/logo-short.jpg" alt="logo">
                 </picture>
             </a>
-            <form class="d-flex">
-                {{--                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">--}}
-                <button class="btn btn-outline-info">Subscribe for Updates</button>
-            </form>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <ul class="navbar-nav nav-item dropdown me-auto mb-2 mb-lg-0">
+                        <li class="nav-link mx-2">
+                            <a class="nav-link dropdown-toggle" href="/login" id="navbarDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Login
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/register">Register</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <button class="btn btn-outline-info">Subscribe for Updates</button>
+                </div>
+            </div>
         </div>
     </nav>
 </section>
@@ -38,25 +62,25 @@
 {{ $slot }}
 
 <footer class="bg-light text-center py-5">
- <div class="container">
-     <img src="/images/lary-newsletter-icon.svg" alt="email" class="mx-auto" style="width: 145px;">
-     <h2 class="font-weight-normal mb-4"> Stay in touch with the latest posts </h2>
+    <div class="container">
+        <img src="/images/lary-newsletter-icon.svg" alt="email" class="mx-auto" style="width: 145px;">
+        <h2 class="font-weight-normal mb-4"> Stay in touch with the latest posts </h2>
 
-     <div class="">
-         <form method="POST" action="#" class="position-relative d-inline-block">
-             <div class="form-group d-flex align-items-center">
-                 <label for="email" class="d-none">
-                     <img src="/images/mailbox-icon.svg" alt="mailbox letter">
-                 </label>
-                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-             </div>
-             <button type="submit" class="btn btn-info px-3 my-3">Subscribe</button>
-         </form>
-     </div>
- </div>
+        <div class="">
+            <form method="POST" action="#" class="position-relative d-inline-block">
+                <div class="form-group d-flex align-items-center">
+                    <label for="email" class="d-none">
+                        <img src="/images/mailbox-icon.svg" alt="mailbox letter">
+                    </label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                           placeholder="Enter email">
+                </div>
+                <button type="submit" class="btn btn-info px-3 my-3">Subscribe</button>
+            </form>
+        </div>
+    </div>
 
 </footer>
-
 </body>
 
 </html>

@@ -14,7 +14,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-       $attributes = $request->validate([
+        $attributes = $request->validate([
             'name' => 'required|max:255',
             'username' => 'required|max:255|min:2|unique:users,username', //Rule::unique('users', 'username')-> ... for more complex validations
             'email' => 'required|email|max:255|unique:users,email',
@@ -22,11 +22,9 @@ class UserController extends Controller
         ]);
 
 
+        $user = User::create($attributes);
+        auth()->login($user);
 
-       User::create($attributes);
-
-//        session()->flash('accountCreated', 'Your account has been created!');
-//        return redirect('/');
         return redirect('/')->with('accountCreated', 'Your account has been created!');
     }
 }
