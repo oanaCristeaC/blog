@@ -41,24 +41,35 @@
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <ul class="navbar-nav nav-item me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav nav-item dropdown me-auto mb-2 mb-lg-0">
                         @guest
                             <li class="nav-link mx-2">
-                                <a class="nav-link" href="/login" id="navbarDropdown" role="button">
-                                    Login
+                                <a class="nav-link dropdown-toggle" href="/account" id="navbarDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    Account
                                 </a>
-                            </li>
-                            <li class="nav-link mx-2">
-                                <a class="nav-link" href="/login" id="navbarDropdown" role="button">
-                                    Login
-                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="/login">Login</a></li>
+                                    <li><a class="dropdown-item" href="/register">Register</a></li>
+                                </ul>
                             </li>
                         @endguest
                         @auth
                             <li class="nav-link mx-2">
-                                <a class="nav-link" href="/account" id="navbarDropdown" role="button">
+                                <a class="nav-link dropdown-toggle" href="/account" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
                                     {{ ucfirst(auth()->user()->name)}}
                                 </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="/register">Profile</a></li>
+                                    <li>
+                                        <form method="POST" action="/logout">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item"> Log out </button>
+                                        </form>
+
+                                    </li>
+                                </ul>
                             </li>
                         @endauth
                     </ul>

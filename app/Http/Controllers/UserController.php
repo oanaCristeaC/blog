@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -25,6 +26,6 @@ class UserController extends Controller
         $user = User::create($attributes);
         auth()->login($user);
 
-        return redirect('/')->with('accountCreated', 'Your account has been created!');
+        return redirect(RouteServiceProvider::HOME)->with('success', 'Your account has been created!');
     }
 }

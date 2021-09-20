@@ -10,9 +10,9 @@
             <p class="text-center"> No posts yet. Please check again later.</p>
         @endif
     </main>
-    @if(session('accountCreated'))
+    @if(session('success'))
         <div class="d-flex justify-content-end fixed-bottom" style="right: 12px">
-            <x-flash messageKey="accountCreated"/>
+            <x-flash messageKey="success"/>
         </div>
     @endif
 </x-layout>
