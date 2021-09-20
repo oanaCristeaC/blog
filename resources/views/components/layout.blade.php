@@ -41,16 +41,26 @@
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <ul class="navbar-nav nav-item dropdown me-auto mb-2 mb-lg-0">
-                        <li class="nav-link mx-2">
-                            <a class="nav-link dropdown-toggle" href="/login" id="navbarDropdown" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
-                                Login
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/register">Register</a></li>
-                            </ul>
-                        </li>
+                    <ul class="navbar-nav nav-item me-auto mb-2 mb-lg-0">
+                        @guest
+                            <li class="nav-link mx-2">
+                                <a class="nav-link" href="/login" id="navbarDropdown" role="button">
+                                    Login
+                                </a>
+                            </li>
+                            <li class="nav-link mx-2">
+                                <a class="nav-link" href="/login" id="navbarDropdown" role="button">
+                                    Login
+                                </a>
+                            </li>
+                        @endguest
+                        @auth
+                            <li class="nav-link mx-2">
+                                <a class="nav-link" href="/account" id="navbarDropdown" role="button">
+                                    {{ ucfirst(auth()->user()->name)}}
+                                </a>
+                            </li>
+                        @endauth
                     </ul>
                     <button class="btn btn-outline-info">Subscribe for Updates</button>
                 </div>
