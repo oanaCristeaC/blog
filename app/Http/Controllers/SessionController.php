@@ -30,6 +30,8 @@ class SessionController extends Controller
             throw ValidationException::withMessages(['email' => 'Your provided credentials could not be verified']);
         }
 
+        session()->regenerate();
+
         return redirect(RouteServiceProvider::HOME)->with('success', 'Welcome back!');
 
 
