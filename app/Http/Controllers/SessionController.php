@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Providers\RouteServiceProvider;
 use Illuminate\Validation\ValidationException;
+
 class SessionController extends Controller
 {
 
@@ -24,15 +25,17 @@ class SessionController extends Controller
         ]);
 
 
-        if (auth()->attempt($attributes)) {
-            return redirect(RouteServiceProvider::HOME)->with('success', 'Welcome back!');
+        //todo: use auth.failed
+        if (!auth()->attempt($attributes)) {
+            throw ValidationException::withMessages(['email' => 'Your provided credentials could not be verified']);
         }
 
-        throw ValidationException::withMessages(['email' => 'Your provided credentials could not be verified']);
+        return redirect(RouteServiceProvider::HOME)->with('success', 'Welcome back!');
 
-//        return back()
-//            ->withInput()
-//            ->withErrors(['email' => 'Your provided credentials could not be verified']);
+
+        // return back()
+        //->withInput()
+        //->withErrors(['email' => 'Your provided credentials could not be verified']);
     }
 
     public function destroy()
