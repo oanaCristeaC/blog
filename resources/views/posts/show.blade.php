@@ -8,6 +8,11 @@
                 <p> {{ $post->body }} </p>
                 <a href="/">Go back</a>
             </div>
+            <div class="my-3">
+                <h4>Reviews</h4>
+            </div>
+
+            <x-comment></x-comment>
         </div>
     </article>
 </x-layout>
