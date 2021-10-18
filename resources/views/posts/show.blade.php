@@ -11,8 +11,9 @@
             <div class="my-3">
                 <h4>Reviews</h4>
             </div>
-
-            <x-comment></x-comment>
+            @foreach($post->comments as $commentObj)
+                <x-comment :comment="$commentObj"></x-comment>
+            @endforeach
         </div>
     </article>
 </x-layout>
