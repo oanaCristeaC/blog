@@ -11,6 +11,8 @@
             <div class="my-3">
                 <h4>Reviews</h4>
             </div>
+            <x-comment-form></x-comment-form>
+
             @foreach($post->comments as $commentObj)
                 <x-comment :comment="$commentObj"></x-comment>
             @endforeach
