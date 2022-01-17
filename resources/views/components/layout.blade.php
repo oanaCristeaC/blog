@@ -24,7 +24,7 @@
                 <picture>
                     <source media="(max-width: 799px)" srcset="images/logo-short.jpg">
                     <source media="(min-width: 800px)" srcset="/images/logo.jpg">
-                    <img style="max-height:40px" src="/images/logo-short.jpg" alt="logo">
+                    <a href="/"><img style="max-height:40px" src="/images/logo-short.jpg" alt="logo"></a>
                 </picture>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -65,7 +65,7 @@
                                     <li>
                                         <form method="POST" action="/logout">
                                             @csrf
-                                            <button type="submit" class="dropdown-item"> Log out </button>
+                                            <button type="submit" class="dropdown-item"> Log out</button>
                                         </form>
 
                                     </li>
@@ -73,7 +73,7 @@
                             </li>
                         @endauth
                     </ul>
-                    <button class="btn btn-outline-info">Subscribe for Updates</button>
+                    <a class="btn btn-outline-info m-auto" type="button" href="#newsletters">Subscribe for Updates</a>
                 </div>
             </div>
         </div>
@@ -88,15 +88,22 @@
         <h2 class="font-weight-normal mb-4"> Stay in touch with the latest posts </h2>
 
         <div class="">
-            <form method="POST" action="#" class="position-relative d-inline-block">
+            <form method="POST" action="/newsletters" class="position-relative d-inline-block">
+                @csrf
+
                 <div class="form-group d-flex align-items-center">
                     <label for="email" class="d-none">
                         <img src="/images/mailbox-icon.svg" alt="mailbox letter">
                     </label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
-                           placeholder="Enter email">
+                    <div>
+                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                               placeholder="Enter email">
+                        @error('email')
+                        <p class="text-danger fs-6">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-info px-3 my-3">Subscribe</button>
+                <button type="submit" id="newsletters" class="btn btn-info px-3 my-3">Subscribe</button>
             </form>
         </div>
     </div>

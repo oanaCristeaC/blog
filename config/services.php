@@ -20,6 +20,11 @@ return [
         'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
     ],
 
+    'mailchimp' => [
+      'key' => env('MAILCHIMP_KEY'),
+      'subscribed_key' => env('MAILCHIMP_SUBSCRIBED_LIST_KEY'),
+    ],
+
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],
