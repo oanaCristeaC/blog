@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use \Illuminate\Http\Response;
 
 class PostController extends Controller
 {
@@ -20,6 +21,16 @@ class PostController extends Controller
             'post' => $post,
         ]);
 
+    }
+    // The simples way to create a protected route
+    // but IS NOT GOOD
+    public function create()
+    {
+        if (auth()->guest() || auth()->user() && auth()->user()->username !== 'ionelacristea'){
+            abort(Response::HTTP_FORBIDDEN);
+        }
+
+        return view('posts.create');
     }
 
 }
