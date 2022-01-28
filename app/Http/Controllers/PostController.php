@@ -22,14 +22,9 @@ class PostController extends Controller
         ]);
 
     }
-    // The simples way to create a protected route
-    // but IS NOT GOOD
+
     public function create()
     {
-        if (auth()->guest() || auth()->user() && auth()->user()->username !== 'ionelacristea'){
-            abort(Response::HTTP_FORBIDDEN);
-        }
-
         return view('posts.create');
     }
 

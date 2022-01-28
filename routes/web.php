@@ -9,7 +9,7 @@ use App\Http\Controllers\SessionController;
 
 Route::get('/', [PostController::class, 'index'])->name('home');
 
-Route::get('admin/posts/create', [PostController::class, 'create'])
+Route::get('admin/posts/create', [PostController::class, 'create'])->middleware('admin')
     ->name('create.post');
 
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])
