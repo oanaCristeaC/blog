@@ -14,13 +14,13 @@ class NewslettersController extends Controller
      */
     public function create(Newsletters $newsletters)
     {
-        request()->validate(['email' => 'required|email']);
+        request()->validate(['email_subscription' => 'required|email']);
 
         try {
-            $newsletters->subscribe(request('email'));
+            $newsletters->subscribe(request('email_subscription'));
 
         } catch (\Exception $e) {
-            throw ValidationException::withMessages(['email' => 'Please provide a valid email address!']);
+            throw ValidationException::withMessages(['email.subscription' => 'Please provide a valid email address!']);
         }
 
         return redirect('/')->with('success', 'You are now subscribed to our newsletters');

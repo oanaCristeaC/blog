@@ -96,9 +96,9 @@
                         <img src="/images/mailbox-icon.svg" alt="mailbox letter">
                     </label>
                     <div>
-                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
-                               placeholder="Enter email">
-                        @error('email')
+                        <input type="email" class="form-control" id="email_subscription" name="email_subscription" aria-describedby="emailHelp"
+                               placeholder="Enter email" value="{{ old('email_subscription') }}">
+                        @error('email.subscription')
                         <p class="text-danger fs-6">{{ $message }}</p>
                         @enderror
                     </div>
