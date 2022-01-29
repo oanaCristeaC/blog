@@ -38,10 +38,10 @@ class PostController extends Controller
     {
         $attributes = $request->validate([
             "title" => 'required|max:255',
-            "slug" => 'required|max:255',
+            "slug" => 'required|max:255|unique:posts',
             "excerpt" => 'required|max:255',
             "body" => 'required',
-            "category_id" => "required",
+            "category_id" => "required|exists:App\Models\Category,id",
         ]);
 
         $attributes['user_id'] = auth()->id();
