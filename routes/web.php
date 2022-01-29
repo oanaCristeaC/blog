@@ -11,6 +11,8 @@ Route::get('/', [PostController::class, 'index'])->name('home');
 
 Route::get('admin/posts/create', [PostController::class, 'create'])->middleware('admin')
     ->name('create.post');
+Route::post('admin/posts', [PostController::class, 'store'])->middleware('admin')
+    ->name('posts');
 
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])
     ->name('post');
