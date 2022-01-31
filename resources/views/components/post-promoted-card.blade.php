@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12 col-md-6">
             <a href="/posts/{{ $post->slug }}">
-                <img src="/images/illustration-1.png" style="max-width: 100%" alt="Blog Post illustration"
+                <img src="{{$post->thumbnail ? asset('storage/' . $post->thumbnail) :  '/images/illustration-1.png'}}" style="max-width: 100%" alt="Blog Post illustration"
                      class="rounded">
             </a>
         </div>

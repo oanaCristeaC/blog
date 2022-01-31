@@ -1,10 +1,10 @@
 <x-layout>
     <div class="row">
         <div class="col-12 col-md-9 m-auto py-5">
-            <form action="/admin/posts" method="POST">
+            <form action="/admin/posts" method="POST" enctype="multipart/form-data">
                 @csrf
 
-                <h3> Create a post </h3>
+                <h3 class="mb-5 text-center"> Create a post </h3>
 
                 {{--        Title--}}
                 <div class="form-group mb-3">
@@ -22,6 +22,16 @@
                     <input type="text" class="form-control" placeholder="Post slug" name="slug"
                               id="postSlug" rows="1" cols="33" value="{{ old('slug') }}"/>
                     @error('slug')
+                    <p class="text-danger fs-6">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                {{--        Thumbnail --}}
+                <div class="form-group mb-3">
+                    <label class="form-label" for="postThumbnail"><b>Thumbnail</b></label>
+                    <input type="file" multiple class="form-control" placeholder="Post thumbnail" name="thumbnail"
+                           id="postThumbnail" rows="1" cols="33" value="{{ old('thumbnail') }}"/>
+                    @error('thumbnail')
                     <p class="text-danger fs-6">{{ $message }}</p>
                     @enderror
                 </div>
