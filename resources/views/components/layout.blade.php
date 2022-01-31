@@ -61,11 +61,19 @@
                                     {{ ucfirst(auth()->user()->name)}}
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="/register">Profile</a></li>
+                                {{-- admin specific --}}
+                                    <li class="border-bottom {{ request()->is('admin/posts/create') ? 'bg-info' : '' }}">
+                                        <a class="dropdown-item" href="/admin/posts/create">
+                                            Create post
+                                        </a>
+                                    </li>
+                                {{-- end admin specific --}}
+
+                                    <li><a class="dropdown-item" href="/">Dashboard</a></li>
                                     <li>
                                         <form method="POST" action="/logout">
                                             @csrf
-                                            <button type="submit" class="dropdown-item"> Log out</button>
+                                            <button type="submit" class="dropdown-item">Log out</button>
                                         </form>
 
                                     </li>
