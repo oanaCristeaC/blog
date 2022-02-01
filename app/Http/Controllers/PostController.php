@@ -25,36 +25,4 @@ class PostController extends Controller
 
     }
 
-    public function create()
-    {
-
-        return view('posts.create', [
-            'categories' => Category::all()
-        ]);
-    }
-
-    //todo move this in a Requests page
-    public function store(Request $request)
-    {
-
-        // A storage link was created: php artisan storage:link
-
-        $attributes = $request->validate([
-            "title" => 'required|max:255',
-            "slug" => 'required|max:255|unique:posts',
-            "thumbnail" => 'required|image',
-            "excerpt" => 'required|max:255',
-            "body" => 'required',
-            "category_id" => "required|exists:App\Models\Category,id",
-        ]);
-
-        $attributes['user_id'] = auth()->id();
-        $attributes['thumbnail'] = $request->file('thumbnail')->store('thumbnails');
-
-        Post::create($attributes);
-
-        return redirect(RouteServiceProvider::HOME)->with('success', 'Your blog post has been posted!');
-
-    }
-
 }

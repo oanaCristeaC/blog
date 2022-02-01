@@ -23,8 +23,7 @@
         @enderror
 
         <x-form.formfield>
-            <x-button></x-button>
+            <x-button label="Create"></x-button>
         </x-form.formfield>
     </form>
-
 </x-settings-layout>
