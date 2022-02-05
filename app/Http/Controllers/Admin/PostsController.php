@@ -21,7 +21,6 @@ class PostsController extends Controller
 
     public function create()
     {
-
         return view('admin.posts.create', [
             'categories' => Category::all()
         ]);
@@ -30,10 +29,8 @@ class PostsController extends Controller
     //todo move this in a Requests page
     public function store(Request $request)
     {
-        $post = new Post();
-
         // A storage link was created: php artisan storage:link
-        $attributes = $this->validatePost($request, $post);
+        $attributes = $this->validatePost($request);
 
         $attributes['user_id'] = auth()->id();
         $attributes['thumbnail'] = $request->file('thumbnail')->store('thumbnails');
@@ -57,7 +54,7 @@ class PostsController extends Controller
     {
         $attributes = $this->validatePost($request, $post);
 
-        if(($attributes['thumbnail'] ?? false) {
+        if($attributes['thumbnail'] ?? false) {
             $attributes['thumbnail'] = $request->file('thumbnail')->store('thumbnails');
         }
 
@@ -75,15 +72,16 @@ class PostsController extends Controller
 
     /**
      * @param Request $request
-     * @param Post $post
+     * @param Post|null $post
      * @return array
      */
-    private function validatePost(Request $request, Post $post): array
+    private function validatePost(Request $request, ?Post $post = null): array
     {
+
         $attributes = $request->validate([
             "title" => 'required|max:255',
             "slug" => ['required', 'max:255', Rule::unique('posts', 'slug')->ignore($post)],
-            "thumbnail" => $post->exists ? 'image' : 'required|image',
+            "thumbnail" => $post && $post->exists ? 'image' : 'required|image',
             "excerpt" => 'required|max:255',
             "body" => 'required',
             "category_id" => "required|exists:App\Models\Category,id",
