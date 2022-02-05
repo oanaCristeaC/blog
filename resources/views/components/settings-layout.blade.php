@@ -15,6 +15,11 @@
                 </div>
                 <div class="col-12 col-md-9">
                     {{ $slot }}
+                    @if(session('success'))
+                        <div class="d-flex justify-content-end fixed-bottom" style="right: 12px">
+                            <x-flash messageKey="success"/>
+                        </div>
+                    @endif
                 </div>
 
             </div>
