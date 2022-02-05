@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+use Illuminate\Http\RedirectResponse;
 
 class PostsController extends Controller
 {
@@ -21,16 +22,16 @@ class PostsController extends Controller
 
     public function create()
     {
+
         return view('admin.posts.create', [
             'categories' => Category::all()
         ]);
     }
 
-    //todo move this in a Requests page
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
         // A storage link was created: php artisan storage:link
-        $attributes = $this->validatePost($request);
+        $attributes = $request->validated();
 
         $attributes['user_id'] = auth()->id();
         $attributes['thumbnail'] = $request->file('thumbnail')->store('thumbnails');
@@ -50,11 +51,12 @@ class PostsController extends Controller
     }
 
 
-    public function update(Request $request, Post $post)
+    public function update(UpdatePostRequest $request, Post $post): RedirectResponse
     {
-        $attributes = $this->validatePost($request, $post);
 
-        if($attributes['thumbnail'] ?? false) {
+        $attributes = $request->validated();
+
+        if(isset($attributes['thumbnail'])) {
             $attributes['thumbnail'] = $request->file('thumbnail')->store('thumbnails');
         }
 
@@ -63,30 +65,11 @@ class PostsController extends Controller
         return back()->with('success', 'Your blog post has been updated!');
     }
 
-    public function destroy(Post $post)
+    public function destroy(Post $post): RedirectResponse
     {
         $post->delete();
 
         return back()->with('success', 'Post successfully deleted.');
-    }
-
-    /**
-     * @param Request $request
-     * @param Post|null $post
-     * @return array
-     */
-    private function validatePost(Request $request, ?Post $post = null): array
-    {
-
-        $attributes = $request->validate([
-            "title" => 'required|max:255',
-            "slug" => ['required', 'max:255', Rule::unique('posts', 'slug')->ignore($post)],
-            "thumbnail" => $post && $post->exists ? 'image' : 'required|image',
-            "excerpt" => 'required|max:255',
-            "body" => 'required',
-            "category_id" => "required|exists:App\Models\Category,id",
-        ]);
-        return $attributes;
     }
 
 }
