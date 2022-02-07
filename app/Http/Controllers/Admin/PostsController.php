@@ -14,6 +14,10 @@ class PostsController extends Controller
 {
     public function index (Post $post)
     {
+//        ddd(Gate::allows('admin'));
+//        $this->authorize('admin');
+//        dd(request()->user()->can('admin'));
+
         return view('admin.posts.index', [
             'posts' => $post->paginate(50),
         ]);

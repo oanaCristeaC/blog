@@ -15,23 +15,26 @@ Route::get('/', [PostController::class, 'index'])->name('home');
 
 // Admin CRUD posts
 
-Route::get('admin/posts', [AdminPostController::class, 'index'])->middleware('admin')
-    ->name('admin.posts.index');
+Route::middleware('can:admin')->group(function() {
+    Route::get('admin/posts', [AdminPostController::class, 'index'])
+        ->name('admin.posts.index');
 
-Route::get('admin/posts/create', [AdminPostController::class, 'create'])->middleware('admin')
-    ->name('admin.post.create');
+    Route::get('admin/posts/create', [AdminPostController::class, 'create'])
+        ->name('admin.post.create');
 
-Route::post('admin/posts', [AdminPostController::class, 'store'])->middleware('admin')
-    ->name('admin.posts.store');
+    Route::post('admin/posts', [AdminPostController::class, 'store'])
+        ->name('admin.posts.store');
 
-Route::get('admin/posts/{post}/edit', [AdminPostController::class, 'edit'])->middleware('admin')
-    ->name('admin.posts.edit');
+    Route::get('admin/posts/{post}/edit', [AdminPostController::class, 'edit'])
+        ->name('admin.posts.edit');
 
-Route::patch('admin/posts/{post}', [AdminPostController::class, 'update'])->middleware('admin')
-    ->name('admin.posts.update');
+    Route::patch('admin/posts/{post}', [AdminPostController::class, 'update'])
+        ->name('admin.posts.update');
 
-Route::delete('admin/posts/{post}', [AdminPostController::class, 'destroy'])->middleware('admin')
-    ->name('admin.posts.destroy');
+    Route::delete('admin/posts/{post}', [AdminPostController::class, 'destroy'])
+        ->name('admin.posts.destroy');
+});
+
 // End admin CRUD
 
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])

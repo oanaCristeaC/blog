@@ -62,11 +62,17 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 {{-- admin specific --}}
-                                    <li class="border-bottom {{ request()->is('admin/posts/create') ? 'bg-info' : '' }}">
-                                        <a class="dropdown-item" href="/admin/posts/create">
-                                            Create post
-                                        </a>
-                                    </li>
+
+{{--                                    user still can access the route on this way so we also need to protect the route--}}
+
+{{--                                    @if(auth()->user()->can('admin'))--}}
+                                    @can('admin')
+                                        <li class="border-bottom {{ request()->is('admin/posts/create') ? 'bg-info' : '' }}">
+                                            <a class="dropdown-item" href="/admin/posts/create">
+                                                Create post
+                                            </a>
+                                        </li>
+                                    @endcan
                                 {{-- end admin specific --}}
 
                                     <li><a class="dropdown-item" href="/">Dashboard</a></li>
